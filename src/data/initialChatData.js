@@ -1,108 +1,92 @@
-export const CHAT_PARTICIPANTS = {
-  currentUser: {
-    userId: "u001",
-    name: "Rohit Sharma",
-    profilePicture: `https://api.dicebear.com/7.x/avataaars/png?seed=rohit&size=40`
-  },
-  otherUser: {
-    userId: "u002", 
-    name: "Priya Singh",
-    profilePicture: `https://api.dicebear.com/7.x/avataaars/png?seed=priya&size=40`
-  }
-};
+import { USERS } from '../constants/config';
 
-export const CURRENT_USER_ID = "u001"; // For Demo assume Rohit Sharma is always the current user
+export const CHAT_PARTICIPANTS = USERS;
 
 export const initialChatData = {
-  "chatId": "c123456",
-  "participants": [
-    CHAT_PARTICIPANTS.currentUser,
-    CHAT_PARTICIPANTS.otherUser
-  ],
-  "messages": [
+  messages: [
     {
-      "messageId": "m001",
-      "senderId": "u001",
-      "text": "Hey Priya! How's your day going?",
-      "timestamp": "2025-08-10T10:15:23Z",
-      "isCurrentUser": true
+      id: "m012",
+      senderId: USERS.OTHER_USER.id,
+      text: "Got it. Let's fix that before the release then.",
+      timestamp: new Date("2025-08-10T10:21:30Z").getTime(),
+      status: null
     },
     {
-      "messageId": "m002",
-      "senderId": "u002",
-      "text": "Hi Rohit! Pretty good so far, just had coffee ☕. You?",
-      "timestamp": "2025-08-10T10:16:02Z",
-      "isCurrentUser": false
+      id: "m011",
+      senderId: USERS.CURRENT_USER.id,
+      text: "Not major, but it was causing extra API calls.",
+      timestamp: new Date("2025-08-10T10:21:05Z").getTime(),
+      status: "read"
     },
     {
-      "messageId": "m003",
-      "senderId": "u001",
-      "text": "Nice! I'm working on that project we discussed yesterday.",
-      "timestamp": "2025-08-10T10:17:10Z",
-      "isCurrentUser": true
+      id: "m010",
+      senderId: USERS.OTHER_USER.id,
+      text: "Oh no 😅. Was it breaking something major?",
+      timestamp: new Date("2025-08-10T10:20:42Z").getTime(),
+      status: null
     },
     {
-      "messageId": "m004",
-      "senderId": "u002",
-      "text": "Oh, the marketing dashboard one?",
-      "timestamp": "2025-08-10T10:17:25Z",
-      "isCurrentUser": false
+      id: "m009",
+      senderId: USERS.CURRENT_USER.id,
+      text: "Will do. Also, I found a bug in the old version.",
+      timestamp: new Date("2025-08-10T10:20:15Z").getTime(),
+      status: "delivered"
     },
     {
-      "messageId": "m005",
-      "senderId": "u001",
-      "text": "Yep. Almost done with the UI part.",
-      "timestamp": "2025-08-10T10:18:04Z",
-      "isCurrentUser": true
+      id: "m008",
+      senderId: USERS.OTHER_USER.id,
+      text: "Sure. Send me the repo link when you're ready.",
+      timestamp: new Date("2025-08-10T10:19:46Z").getTime(),
+      status: null
     },
     {
-      "messageId": "m006",
-      "senderId": "u002",
-      "text": "That's quick! Need any help with the API integration?",
-      "timestamp": "2025-08-10T10:18:35Z",
-      "isCurrentUser": false
+      id: "m007",
+      senderId: USERS.CURRENT_USER.id,
+      text: "Actually yes, can you check the auth flow later?",
+      timestamp: new Date("2025-08-10T10:19:12Z").getTime(),
+      status: "read"
     },
     {
-      "messageId": "m007",
-      "senderId": "u001",
-      "text": "Actually yes, can you check the auth flow later?",
-      "timestamp": "2025-08-10T10:19:12Z",
-      "isCurrentUser": true
+      id: "m006",
+      senderId: USERS.OTHER_USER.id,
+      text: "That's quick! Need any help with the API integration?",
+      timestamp: new Date("2025-08-10T10:18:35Z").getTime(),
+      status: null
     },
     {
-      "messageId": "m008",
-      "senderId": "u002",
-      "text": "Sure. Send me the repo link when you're ready.",
-      "timestamp": "2025-08-10T10:19:46Z",
-      "isCurrentUser": false
+      id: "m005",
+      senderId: USERS.CURRENT_USER.id,
+      text: "Yep. Almost done with the UI part.",
+      timestamp: new Date("2025-08-10T10:18:04Z").getTime(),
+      status: "delivered"
     },
     {
-      "messageId": "m009",
-      "senderId": "u001",
-      "text": "Will do. Also, I found a bug in the old version.",
-      "timestamp": "2025-08-10T10:20:15Z",
-      "isCurrentUser": true
+      id: "m004",
+      senderId: USERS.OTHER_USER.id,
+      text: "Oh, the marketing dashboard one?",
+      timestamp: new Date("2025-08-10T10:17:25Z").getTime(),
+      status: null
     },
     {
-      "messageId": "m010",
-      "senderId": "u002",
-      "text": "Oh no 😅. Was it breaking something major?",
-      "timestamp": "2025-08-10T10:20:42Z",
-      "isCurrentUser": false
+      id: "m003",
+      senderId: USERS.CURRENT_USER.id,
+      text: "Nice! I'm working on that project we discussed yesterday.",
+      timestamp: new Date("2025-08-10T10:17:10Z").getTime(),
+      status: "read"
     },
     {
-      "messageId": "m011",
-      "senderId": "u001",
-      "text": "Not major, but it was causing extra API calls.",
-      "timestamp": "2025-08-10T10:21:05Z",
-      "isCurrentUser": true
+      id: "m002",
+      senderId: USERS.OTHER_USER.id,
+      text: "Hi Rohit! Pretty good so far, just had coffee ☕. You?",
+      timestamp: new Date("2025-08-10T10:16:02Z").getTime(),
+      status: null
     },
     {
-      "messageId": "m012",
-      "senderId": "u002",
-      "text": "Got it. Let's fix that before the release then.",
-      "timestamp": "2025-08-10T10:21:30Z",
-      "isCurrentUser": false
+      id: "m001",
+      senderId: USERS.CURRENT_USER.id,
+      text: "Hey Priya! How's your day going?",
+      timestamp: new Date("2025-08-10T10:15:23Z").getTime(),
+      status: "read"
     }
   ]
 };

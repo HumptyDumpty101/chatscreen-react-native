@@ -39,10 +39,18 @@ export const createChatScreenStyles = (colors, spacing, fontSizes, fontWeights, 
     flexDirection: 'row',
     alignItems: 'center',
   },
-  simToggle: {
-    padding: spacing.sm,
-    borderRadius: borderRadius.sm,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  headerButton: {
+  borderRadius: borderRadius.sm,
+  backgroundColor: colors.primaryLight,
+  width: 40, 
+  height: 40,
+  justifyContent: 'center', 
+  alignItems: 'center',    
+  },
+  headerButtonText: {
+    rfontSize: fontSizes.xl ?? 20,
+    lineHeight: 24,
+    color: colors.textLight,
   },
   
   // Messages container

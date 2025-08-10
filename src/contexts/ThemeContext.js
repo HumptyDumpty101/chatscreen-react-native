@@ -22,11 +22,8 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     if (useSystemTheme) {
       const subscription = Appearance.addChangeListener(({ colorScheme }) => {
-        // console.log('Appearance changed to:', colorScheme);
         setIsDarkMode(colorScheme === 'dark');
       });
-
-      // console.log('System color scheme:', systemColorScheme);
       setIsDarkMode(systemColorScheme === 'dark');
 
       return () => subscription?.remove();
