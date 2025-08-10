@@ -1,4 +1,4 @@
-export const COLORS = {
+export const LIGHT_COLORS = {
   primary: '#2196F3',
   primaryDark: '#1976D2',
   secondary: '#FFC107',
@@ -22,6 +22,34 @@ export const COLORS = {
   offline: '#757575',
   typing: '#ff9800',
 };
+
+export const DARK_COLORS = {
+  primary: '#64B5F6',
+  primaryDark: '#42A5F5',
+  secondary: '#FFD54F',
+  background: '#121212',
+  surface: '#1E1E1E',
+  text: '#ffffff',
+  textSecondary: '#B0B0B0',
+  textLight: '#000000',
+  border: '#333333',
+  error: '#EF5350',
+  success: '#66BB6A',
+  warning: '#FFA726',
+  
+  // Message specific colors
+  messageUser: '#2E7D32',
+  messageOther: '#2C2C2C',
+  messageBorder: '#404040',
+  
+  // Status colors
+  online: '#66BB6A',
+  offline: '#B0B0B0',
+  typing: '#FFA726',
+};
+
+// Legacy export for backward compatibility
+export const COLORS = LIGHT_COLORS;
 
 export const SPACING = {
   xs: 4,
