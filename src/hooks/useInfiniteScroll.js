@@ -100,7 +100,7 @@ export const useInfiniteScroll = (initialMessages = []) => {
 
   const onScroll = useCallback((event) => {
     const { contentOffset } = event.nativeEvent;
-    const isNearBottom = contentOffset.y < 100;
+    const isNearBottom = contentOffset.y < 20;
     
     setScrollPosition({
       y: contentOffset.y,

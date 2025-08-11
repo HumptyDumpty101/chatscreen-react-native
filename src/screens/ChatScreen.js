@@ -59,6 +59,7 @@ const ChatScreen = () => {
         if (message.senderId === USERS.OTHER_USER.id) {
           if (!scrollPosition.isNearBottom) {
             setNewMessagesCount(prev => prev + 1);
+            setWasAtBottom(false);
           } else {
             setTimeout(() => {
               setLastReadMessageId(message.id);
@@ -90,6 +91,7 @@ const ChatScreen = () => {
     setTimeout(() => {
       scrollToBottom();
       setNewMessagesCount(0);
+      setWasAtBottom(true);
     }, 100);
     
     if (simulationMode === 'contextual') {
@@ -100,14 +102,18 @@ const ChatScreen = () => {
   }, [addMessage, simulationMode, respondToMessage, scrollToBottom]);
 
   React.useEffect(() => {
-    if (scrollPosition.isNearBottom && newMessagesCount > 0) {
-      setNewMessagesCount(0);
-      const latestOtherMessage = messages.find(msg => msg.senderId === USERS.OTHER_USER.id);
-      if (latestOtherMessage) {
-        setLastReadMessageId(latestOtherMessage.id);
-      }
+    if (scrollPosition.isNearBottom && newMessagesCount > 0 && wasAtBottom) {
+      const timeout = setTimeout(() => {
+        setNewMessagesCount(0);
+        const latestOtherMessage = messages.find(msg => msg.senderId === USERS.OTHER_USER.id);
+        if (latestOtherMessage) {
+          setLastReadMessageId(latestOtherMessage.id);
+        }
+      }, 300);
+      
+      return () => clearTimeout(timeout);
     }
-  }, [scrollPosition.isNearBottom, newMessagesCount, messages]);
+  }, [scrollPosition.isNearBottom, newMessagesCount, messages, wasAtBottom]);
 
   const {
     inputText,
@@ -126,6 +132,7 @@ const ChatScreen = () => {
   const handleScrollToBottom = useCallback(() => {
     scrollToBottom();
     setNewMessagesCount(0);
+    setWasAtBottom(true);
     const latestOtherMessage = messages.find(msg => msg.senderId === USERS.OTHER_USER.id);
     if (latestOtherMessage) {
       setLastReadMessageId(latestOtherMessage.id);
