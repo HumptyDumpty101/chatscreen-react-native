@@ -102,9 +102,10 @@ const ChatScreen = () => {
   }, [addMessage, simulationMode, respondToMessage, scrollToBottom]);
 
   React.useEffect(() => {
-    if (scrollPosition.isNearBottom && newMessagesCount > 0 && wasAtBottom) {
+    if (scrollPosition.isNearBottom && newMessagesCount > 0) {
       const timeout = setTimeout(() => {
         setNewMessagesCount(0);
+        setWasAtBottom(true);
         const latestOtherMessage = messages.find(msg => msg.senderId === USERS.OTHER_USER.id);
         if (latestOtherMessage) {
           setLastReadMessageId(latestOtherMessage.id);
@@ -113,7 +114,7 @@ const ChatScreen = () => {
       
       return () => clearTimeout(timeout);
     }
-  }, [scrollPosition.isNearBottom, newMessagesCount, messages, wasAtBottom]);
+  }, [scrollPosition.isNearBottom, newMessagesCount, messages]);
 
   const {
     inputText,
